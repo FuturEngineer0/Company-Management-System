@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Product } from '../types/product';
+import { type Product } from '../types/product';
 import { fetchAllProducts, fetchProductsByCategory } from '../api/products.api';
 import { useDashboardStore } from '../store/dashboardStore';
 

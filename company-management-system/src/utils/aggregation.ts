@@ -1,4 +1,4 @@
-import { Product } from '../types/product';
+import { type Product } from '../types/product';
 
 export const getTotalInventoryValue = (products: Product[]) => {
   return products.reduce((acc, p) => acc + (p.price * p.stock), 0);

@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import { Product } from '../types/product';
+import { type Product } from '../types/product';
 import { 
   getTotalInventoryValue, 
   getStockByCategory, 

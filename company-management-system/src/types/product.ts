@@ -19,4 +19,7 @@ export interface ProductsResponse {
   limit: number;
 }
 
-export type Category = string;
+export interface Category {
+  slug: string;
+  name: string;
+}

@@ -1,5 +1,5 @@
 import { fetchJSON } from './client';
-import { ProductsResponse, Category } from '../types/product';
+import { type ProductsResponse, type Category } from '../types/product';
 
 export const fetchAllProducts = async (limit = 100, skip = 0) => {
   return fetchJSON<ProductsResponse>(`/products?limit=${limit}&skip=${skip}`);

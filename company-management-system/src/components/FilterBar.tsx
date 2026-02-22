@@ -1,14 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import { fetchCategories } from '../api/products.api';
 import { useDashboardStore } from '../store/dashboardStore';
+import { type Category } from '../types/product';
 import '../Style/FilterBar.css';
 
 export const FilterBar: React.FC = () => {
-  const [categories, setCategories] = useState<string[]>([]);
+  const [categories, setCategories] = useState<Category[]>([]);
   const { selectedCategory, setSelectedCategory, saveLayout } = useDashboardStore();
 
   useEffect(() => {
-    fetchCategories().then(setCategories);
+    fetchCategories().then((res) => {
+      // res is Category[] based on products.api.ts
+      setCategories(res);
+    }).catch(console.error);
   }, []);
 
   return (
@@ -22,7 +26,7 @@ export const FilterBar: React.FC = () => {
         >
           <option value="All Categories">All Categories</option>
           {categories.map((cat) => (
-            <option key={cat} value={cat}>{cat}</option>
+            <option key={cat.slug} value={cat.slug}>{cat.name}</option>
           ))}
         </select>
       </div>

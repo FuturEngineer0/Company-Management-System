@@ -1,5 +1,5 @@
 import React from 'react';
-import { Product } from '../types/product';
+import { type Product } from '../types/product';
 import { Widget, WidgetHeader, WidgetBody } from './Widget';
 import { getStatusLabel } from '../utils/aggregation';
 import '../Style/TableWidget.css';

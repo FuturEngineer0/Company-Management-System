@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import { WidgetConfig } from '../types/widget';
+import { type WidgetConfig } from '../types/widget';
 
 interface DashboardState {
   selectedCategory: string;
