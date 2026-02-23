@@ -1,23 +1,25 @@
 .table-subtitle {
      font-size: 13px;
-     color: #6b7280;
+     color: #64748b;
      margin: 0 0 20px 0;
 }
 
 .export-button {
-     background: none;
-     border: 1px solid #e5e7eb;
-     padding: 4px 12px;
-     border-radius: 6px;
+     background: rgba(99, 102, 241, 0.08);
+     border: 1px solid rgba(99, 102, 241, 0.25);
+     padding: 5px 14px;
+     border-radius: 8px;
      font-size: 12px;
-     color: #6b7280;
+     color: #a5b4fc;
      cursor: pointer;
      transition: all 0.2s;
+     font-weight: 500;
 }
 
 .export-button:hover {
-     background-color: #f9fafb;
-     border-color: #d1d5db;
+     background: rgba(99, 102, 241, 0.18);
+     border-color: rgba(99, 102, 241, 0.5);
+     color: #c7d2fe;
 }
 
 .table-wrapper {
@@ -33,23 +35,33 @@
 .products-table th {
      font-size: 11px;
      font-weight: 700;
-     color: #6b7280;
-     padding: 12px 16px;
-     border-bottom: 1px solid #f3f4f6;
+     color: #475569;
+     padding: 10px 16px;
+     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
      text-transform: uppercase;
-     letter-spacing: 0.05em;
+     letter-spacing: 0.07em;
 }
 
 .products-table td {
-     padding: 16px;
+     padding: 14px 16px;
      font-size: 13px;
-     color: #374151;
-     border-bottom: 1px solid #f3f4f6;
+     color: #cbd5e1;
+     border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+     transition: background 0.15s;
+}
+
+.products-table tr:hover td {
+     background: rgba(99, 102, 241, 0.05);
+}
+
+.products-table tr:last-child td {
+     border-bottom: none;
 }
 
 .col-id {
-     color: #9ca3af;
+     color: #475569;
      font-family: monospace;
+     font-size: 12px;
 }
 
 .product-info {
@@ -61,35 +73,40 @@
 .product-thumb {
      width: 32px;
      height: 32px;
-     border-radius: 4px;
+     border-radius: 6px;
      object-fit: cover;
-     background-color: #f3f4f6;
+     background-color: rgba(99, 102, 241, 0.1);
+     border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .col-price {
      font-weight: 700;
-     color: #111827;
+     color: #e2e8f0;
 }
 
 .status-badge {
      display: inline-block;
-     padding: 4px 8px;
-     border-radius: 6px;
+     padding: 4px 10px;
+     border-radius: 20px;
      font-size: 11px;
      font-weight: 600;
+     letter-spacing: 0.02em;
 }
 
 .status-badge.in-stock {
-     color: #059669;
-     background-color: #ecfdf5;
+     color: #34d399;
+     background-color: rgba(16, 185, 129, 0.12);
+     border: 1px solid rgba(16, 185, 129, 0.2);
 }
 
 .status-badge.low-stock {
-     color: #d97706;
-     background-color: #fffbeb;
+     color: #fbbf24;
+     background-color: rgba(245, 158, 11, 0.12);
+     border: 1px solid rgba(245, 158, 11, 0.2);
 }
 
 .status-badge.out-of-stock {
-     color: #dc2626;
-     background-color: #fef2f2;
+     color: #f87171;
+     background-color: rgba(239, 68, 68, 0.12);
+     border: 1px solid rgba(239, 68, 68, 0.2);
 }

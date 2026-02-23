@@ -5,9 +5,8 @@ import {
   XAxis, 
   YAxis, 
   CartesianGrid, 
-  Tooltip, 
+  Tooltip,
   ResponsiveContainer,
-  Cell
 } from 'recharts';
 import { Widget, WidgetHeader, WidgetBody } from './Widget';
 import '../Style/ChartWidget.css';
@@ -20,8 +19,6 @@ interface ChartWidgetProps {
 
 export const ChartWidget: React.FC<ChartWidgetProps> = ({ id, title, data }) => {
   const chartData = Object.entries(data).map(([name, value]) => ({ name, value }));
-  
-  const COLORS = ['#3b82f6', '#60a5fa', '#93c5fd', '#bfdbfe', '#dbeafe'];
 
   return (
     <Widget id={id} title={title}>
@@ -29,26 +26,46 @@ export const ChartWidget: React.FC<ChartWidgetProps> = ({ id, title, data }) => 
       <WidgetBody>
         <p className="chart-subtitle">Current stock levels per category</p>
         <div className="chart-container">
-          <ResponsiveContainer width="100%" height={200}>
-            <BarChart data={chartData} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
-              <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f3f4f6" />
-              <XAxis 
-                dataKey="name" 
-                axisLine={false} 
-                tickLine={false} 
-                tick={{ fill: '#6b7280', fontSize: 11 }}
-                dy={10}
+          <ResponsiveContainer width="100%" height={240}>
+            <BarChart data={chartData} margin={{ top: 10, right: 10, left: -20, bottom: 40 }}>
+              <defs>
+                <linearGradient id="barGradient" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stopColor="#93c5fd" stopOpacity={0.55} />
+                  <stop offset="55%" stopColor="#2563eb" stopOpacity={1} />
+                  <stop offset="100%" stopColor="#2563eb" stopOpacity={1} />
+                </linearGradient>
+              </defs>
+              <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="rgba(255,255,255,0.07)" />
+              <XAxis
+                dataKey="name"
+                axisLine={false}
+                tickLine={false}
+                tick={{ fill: '#94a3b8', fontSize: 8 }}
+                interval={0}
+                dy={8}
               />
               <YAxis hide />
-              <Tooltip 
-                cursor={{ fill: '#f9fafb' }}
-                contentStyle={{ borderRadius: '8px', border: 'none', boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)' }}
+              <Tooltip
+                cursor={{ fill: 'rgba(99, 102, 241, 0.08)' }}
+                contentStyle={{
+                  background: 'rgba(15, 23, 42, 0.9)',
+                  backdropFilter: 'blur(12px)',
+                  border: '1px solid rgba(99, 102, 241, 0.25)',
+                  borderRadius: '10px',
+                  boxShadow: '0 8px 24px rgba(0,0,0,0.4)',
+                  color: '#e2e8f0',
+                  fontSize: '13px',
+                }}
+                labelStyle={{ color: '#a5b4fc', fontWeight: 600 }}
+                itemStyle={{ color: '#e2e8f0' }}
               />
-              <Bar dataKey="value" radius={[4, 4, 0, 0]} barSize={36}>
-                {chartData.map((_entry, index) => (
-                  <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-                ))}
-              </Bar>
+              <Bar
+                dataKey="value"
+                fill="url(#barGradient)"
+                radius={[4, 4, 0, 0]}
+                barSize={36}
+                isAnimationActive={false}
+              />
             </BarChart>
           </ResponsiveContainer>
         </div>

@@ -3,35 +3,44 @@
      display: flex;
      align-items: center;
      justify-content: center;
-     background-color: #f9fafb;
      padding: 20px;
 }
 
 .error-card {
-     background: white;
+     background: rgba(15, 23, 42, 0.7);
+     backdrop-filter: blur(20px);
+     -webkit-backdrop-filter: blur(20px);
+     border: 1px solid rgba(239, 68, 68, 0.2);
      padding: 40px;
-     border-radius: 12px;
-     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+     border-radius: 16px;
+     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
      max-width: 400px;
      text-align: center;
 }
 
 .error-card h2 {
-     color: #111827;
+     color: #f1f5f9;
      margin-top: 0;
 }
 
 .error-card p {
-     color: #6b7280;
+     color: #64748b;
      margin-bottom: 24px;
 }
 
 .error-card button {
-     background-color: #2563eb;
+     background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
      color: white;
      border: none;
-     padding: 10px 20px;
-     border-radius: 6px;
+     padding: 10px 24px;
+     border-radius: 8px;
      font-weight: 600;
      cursor: pointer;
+     box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+     transition: all 0.2s;
+}
+
+.error-card button:hover {
+     box-shadow: 0 6px 20px rgba(99, 102, 241, 0.45);
+     transform: translateY(-1px);
 }

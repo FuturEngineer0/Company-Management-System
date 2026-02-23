@@ -1,18 +1,24 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
 
 :root {
-     font-family: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
-     line-height: 1.5;
+     font-family: 'Plus Jakarta Sans', system-ui, Avenir, Helvetica, Arial, sans-serif;
+     line-height: 1.6;
      font-weight: 400;
 
-     color-scheme: light;
-     color: #111827;
-     background-color: #ffffff;
+     color-scheme: dark;
+     color: #e2e8f0;
 
      font-synthesis: none;
      text-rendering: optimizeLegibility;
      -webkit-font-smoothing: antialiased;
      -moz-osx-font-smoothing: grayscale;
+
+     /* Design tokens */
+     --color-indigo: 99, 102, 241;
+     --color-violet: 139, 92, 246;
+     --color-cyan: 6, 182, 212;
+     --color-teal: 20, 184, 166;
+     --color-rose: 236, 72, 153;
 }
 
 body {
@@ -21,10 +27,82 @@ body {
      place-content: stretch;
      min-width: 320px;
      min-height: 100vh;
+     background-color: #07091a;
+     background-attachment: fixed;
+     overflow-x: hidden;
+     position: relative;
+}
+
+/* Mesh layer 1 — rich color blobs */
+body::before {
+     content: '';
+     position: fixed;
+     inset: 0;
+     background:
+          radial-gradient(ellipse 75% 55% at 5% 10%, rgba(99, 102, 241, 0.32) 0%, transparent 60%),
+          radial-gradient(ellipse 55% 45% at 90% 8%, rgba(139, 92, 246, 0.26) 0%, transparent 55%),
+          radial-gradient(ellipse 65% 55% at 92% 88%, rgba(6, 182, 212, 0.22) 0%, transparent 58%),
+          radial-gradient(ellipse 50% 40% at 8% 88%, rgba(20, 184, 166, 0.20) 0%, transparent 55%),
+          radial-gradient(ellipse 45% 35% at 50% 45%, rgba(236, 72, 153, 0.12) 0%, transparent 55%);
+     pointer-events: none;
+     z-index: 0;
+     animation: meshPulse 14s ease-in-out infinite alternate;
+}
+
+/* Mesh layer 2 — drifting secondary orbs */
+body::after {
+     content: '';
+     position: fixed;
+     inset: 0;
+     background:
+          radial-gradient(circle 500px at 25% 55%, rgba(99, 102, 241, 0.14) 0%, transparent 70%),
+          radial-gradient(circle 400px at 72% 28%, rgba(6, 182, 212, 0.13) 0%, transparent 70%),
+          radial-gradient(circle 450px at 58% 78%, rgba(139, 92, 246, 0.12) 0%, transparent 70%),
+          radial-gradient(circle 300px at 40% 15%, rgba(20, 184, 166, 0.10) 0%, transparent 65%);
+     pointer-events: none;
+     z-index: 0;
+     animation: meshDrift 20s ease-in-out infinite alternate-reverse;
+}
+
+@keyframes meshPulse {
+     0% {
+          opacity: 1;
+          transform: scale(1);
+     }
+
+     50% {
+          opacity: 0.85;
+          transform: scale(1.03);
+     }
+
+     100% {
+          opacity: 1;
+          transform: scale(1);
+     }
+}
+
+@keyframes meshDrift {
+     0% {
+          transform: translateX(0) translateY(0);
+     }
+
+     33% {
+          transform: translateX(20px) translateY(-15px);
+     }
+
+     66% {
+          transform: translateX(-15px) translateY(20px);
+     }
+
+     100% {
+          transform: translateX(10px) translateY(-10px);
+     }
 }
 
 #root {
      width: 100%;
+     position: relative;
+     z-index: 1;
 }
 
 * {
@@ -36,12 +114,15 @@ button {
 }
 
 .widget-container {
-     transition: transform 0.2s, box-shadow 0.2s !important;
+     transition: transform 0.25s ease, box-shadow 0.25s ease !important;
 }
 
 .widget-container:hover {
-     transform: translateY(-2px);
-     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+     transform: translateY(-3px);
+     box-shadow:
+          0 20px 40px rgba(0, 0, 0, 0.4),
+          0 0 0 1px rgba(99, 102, 241, 0.2),
+          0 0 30px rgba(99, 102, 241, 0.08) !important;
 }
 
 h1,
@@ -51,4 +132,22 @@ h4,
 h5,
 h6 {
      margin: 0;
+}
+
+::-webkit-scrollbar {
+     width: 6px;
+     height: 6px;
+}
+
+::-webkit-scrollbar-track {
+     background: rgba(255, 255, 255, 0.03);
+}
+
+::-webkit-scrollbar-thumb {
+     background: rgba(99, 102, 241, 0.3);
+     border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+     background: rgba(99, 102, 241, 0.5);
 }
